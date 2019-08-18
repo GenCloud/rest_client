@@ -1,0 +1,4 @@
+services:
+  routes:
+    - host: https://api.github.com
+      alias: github-service
