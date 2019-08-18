@@ -83,13 +83,11 @@ public class TestInterceptor implements Interceptor {
 
 Usage:
 ```java
-@ScanPackage(packages = {"org.ioc.test"})
+@SpringBootApplication
 public class MainTest {
     public static void main(String... args) {
         final ConfigurableApplicationContext context = SpringApplication.run(MainTest.class, args);
-        log.info("Getting RestGateway from context");
         final RestGateway restGateway = channel.getType(RestGateway.class);
-        assertNotNull(restGateway);
         final Mono<ArrayList> response = restGateway.getRepos("gencloud");
         response.doOnSuccess(list -> 
                 log.info("Received response: {}", list))
